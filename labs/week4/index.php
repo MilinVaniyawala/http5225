@@ -65,6 +65,11 @@
     echo '<pre>';
     echo print_r($links);
     echo '</pre>';
+
+    // Move to my bootstrap class examples
+    $url = 'http://localhost/http5225/labs/week4/test.php';
+    echo '<a href="' . $url . '">' . 'Users' . '</a>';
+
     ?>
 
 </body>
