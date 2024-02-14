@@ -1,4 +1,4 @@
-<?php require_once 'connect.php'; ?>
+<?php require_once 'inc/connect.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <?php include('inc/nav.php'); ?>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -38,6 +39,25 @@
                                     <div class="card-body">
                                         <h5 class="card-title">' . $student['fname'] . ' ' . $student['lname']  . '</h5>
                                         <p class="card-text">Marks: ' . $student['marks'] . ' |  Grade: ' . $student['grade'] . '</p>
+                                    </div>
+                                    
+                                    <div class="card-footer d-flex">
+                                        <div class="col">
+                                            <form method="GET" action="update.php">
+                                                <input type="hidden" name="id" value="' . $student['id'] . '">
+                                                <button type="submit" class="btn btn-sm btn-light">
+                                                    Update 
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="col">
+                                            <form method="GET" action="inc/deleteStudent.php">
+                                                <input type="hidden" name="id" value="' . $student['id'] . '">
+                                                <button type="submit" class="btn btn-sm btn-warning" name="deleteStudent">
+                                                    Delete 
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>';
