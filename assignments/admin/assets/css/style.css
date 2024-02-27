@@ -1,0 +1,195 @@
+/* General Styling */
+body {
+  font-family: "Spectral", serif; /* Use Spectral font */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #0b1c29;
+  color: #ffffff;
+}
+
+/* Navbar Styling */
+.navbar-custom {
+  background-color: #0b1c29;
+}
+
+.navbar-custom .nav-link {
+  color: #dbcb86;
+}
+
+.navbar-custom .nav-link:hover {
+  color: #ffffff;
+}
+
+.navbar-custom .nav-link.active {
+  color: #dbcb86;
+  font-weight: 600;
+}
+
+.navbar-custom .navbar-brand {
+  color: #ffffff;
+}
+
+.navbar-custom .navbar-brand:hover {
+  color: #722f37;
+}
+
+/* Button Styling */
+.btn-custom {
+  background-color: #dbcb86;
+  color: #722f37;
+  border: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-custom:hover {
+  background-color: #722f37;
+  color: #ffffff;
+}
+
+.btn-custom:active,
+.btn-custom.active {
+  background-color: #ffffff;
+  color: #722f37;
+}
+
+.btn-custom:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 0, 230, 0.5);
+}
+
+.btn-custom:disabled,
+.btn-custom.disabled {
+  background-color: #6c757d;
+  color: #ffffff;
+}
+
+/* Wine Card Styling */
+.wine-card {
+  background-color: #1c3a40;
+  color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.wine-card-img-container {
+  width: auto;
+  height: 200px;
+  overflow: hidden;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.wine-card-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.wine-card-content {
+  padding: 20px;
+}
+
+.bi-star {
+  color: gold;
+}
+
+.filled {
+  color: gold;
+}
+
+/* Footer Styling */
+footer {
+  background-color: #0b1c29;
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+footer a {
+  color: #dbcb86;
+}
+
+footer a:hover {
+  color: #722f37;
+}
+
+footer .nav {
+  justify-content: center;
+}
+
+footer .nav-item {
+  border-bottom: 1px solid #dbcb86;
+  padding-bottom: 5px;
+}
+
+footer .nav-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+  .btn-custom {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Center align the image on smaller screens */
+  .align-items-center > .col-md:first-child {
+    text-align: center;
+  }
+}
+
+@media (max-width: 991px) {
+  /* Center align navbar-brand on smaller screens */
+  .navbar-brand {
+    margin: 0 auto;
+    text-align: center;
+    color: #dbcb86; /* Set color for navbar-brand */
+  }
+
+  /* Move navbar-nav to the center */
+  .navbar-nav {
+    text-align: center;
+    margin: auto;
+  }
+
+  /* Remove default margin from navbar items */
+  .navbar-nav .nav-item {
+    margin: 0;
+  }
+
+  /* Adjust padding of navbar items */
+  .navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+    color: #ffffff; /* Set color for navbar links */
+  }
+
+  /* Style for active link */
+  .navbar-nav .nav-link.active {
+    color: #dbcb86; /* Set color for active link */
+    font-weight: 600;
+  }
+
+  /* Background color for toggler icon */
+  .navbar-toggler-icon {
+    color: #dbcb86; /* Set background color for toggler icon */
+  }
+
+  /* Background color for navbar when toggler is active */
+  .navbar-collapse.show {
+    background-color: #0b1c29; /* Set background color for navbar collapse */
+  }
+
+  /* Stack the columns on medium screens */
+  .d-flex.flex-column {
+    flex-basis: 100%;
+    padding: 20px;
+  }
+}

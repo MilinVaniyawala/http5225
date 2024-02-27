@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!doctype html>
 <html lang="en">
 
@@ -10,13 +7,18 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>MV Wines</title>
+    <!-- Include Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap">
+    <!-- Bootstrap ICONS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Default CSS -->
+    <link href="./admin/assets/css/style.css" type="text/css" rel="stylesheet">
+    <title> MV Wines </title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container container-fluid">
             <a class="navbar-brand" href="./">
                 MV Wines
             </a>
@@ -29,11 +31,11 @@
                         <a class="nav-link active" aria-current="page" href="./">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./">Admin</a>
+                        <a class="nav-link" aria-current="page" href="./">Admin</a>
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <a href="./" class="btn btn-outline-success" role="button" data-bs-toggle="button">Login</a>
+                    <a href="./" class="btn btn-custom" role="button" data-bs-toggle="button">Login</a>
                 </div>
             </div>
         </div>
