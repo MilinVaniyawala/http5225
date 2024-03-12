@@ -1,4 +1,5 @@
 <?php
+include("./admin/config/config.php");
 include("./admin/inc/header.php");
 include("./admin/config/connect.php");
 ?>
@@ -11,7 +12,7 @@ include("./admin/config/connect.php");
             <!-- Unsplash Image -->
             <img src="./admin/assets/img/wineonblacktable.jpg" alt="Wine Bottle On Black Table" class="d-block w-100 img-fluid">
         </div>
-        <div class="col-md d-flex flex-column">
+        <div class="col-md d-flex flex-column ">
             <p class="text-muted mb-3">Welcome to MV Wines, where we craft high-quality, affordable wines for every moment that matters. We offer a diverse range of options to suit every taste preference.</p>
             <p class="text-muted mb-3">Our skilled winemakers spend a great deal of time in the vineyard, ensuring our grapes are at their peak for color, taste, and quality. We are committed to delivering superior quality wines at great value, while providing a positive experience to consumers.</p>
             <p class="text-muted mb-3">At MV Wines, we believe in preserving and enhancing the land for future generations to enjoy, adhering to sustainable practices that are environmentally sound, economically feasible, and socially equitable.</p>
