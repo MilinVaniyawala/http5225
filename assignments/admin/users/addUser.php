@@ -12,7 +12,7 @@ if(isset($_POST['addUser'])){
         "' . mysqli_real_escape_string($connect, $_POST['email']) . '",
         "' . mysqli_real_escape_string($connect, (int)$_POST['role_id']) . '"
     )'; 
-    echo $query;
+    // echo $query;
     $result = mysqli_query($connect, $query);
 
     if (!$result) {
@@ -21,7 +21,7 @@ if(isset($_POST['addUser'])){
         header('LOCATION: user.php');
     }
 }else{
-    echo "Error!!!";
+    // echo "Error!!!";
 }
 ?>
 

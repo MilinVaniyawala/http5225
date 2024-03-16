@@ -9,6 +9,25 @@ $user_id = $_GET['user_id'];
 $query = 'SELECT * FROM `users` Where `user_id`= '.$user_id.'';
 $user = mysqli_query($connect, $query);
 $result = $user->fetch_assoc();
+
+/* After Submit */
+if(isset($_POST['updateUser'])){
+    // For Secure Purpose we are using mysqli_real_escape_string() // Attack Like SQL INJECTION
+    $query = 'UPDATE `users` SET `username`= "' . mysqli_real_escape_string($connect, $_POST['username']) . '",
+    `password`="' . md5($_POST['password']) . '",
+    `email`= "' . mysqli_real_escape_string($connect, $_POST['email']) . '",
+    `role_id`="' . mysqli_real_escape_string($connect, (int)$_POST['role_id']) . '" WHERE `user_id`='.$user_id.'';
+    // echo $query;
+    $result = mysqli_query($connect, $query);
+
+    if (!$result) {
+        echo mysqli_error($connect);
+    } else {
+        header('LOCATION: user.php');
+    }
+} else{
+    // echo "Error!!!";
+}
 ?>
 
 <!doctype html>
