@@ -1,7 +1,18 @@
 <?php
 include("../config/config.php");
-include($_SERVER['DOCUMENT_ROOT'] . '/http5225/assignments/admin/inc/header.php');
+include("../inc/header.php");
 include("../config/connect.php");
+
+/* Only Admin User Have Access to this page */
+if (isset($_SESSION['role_id'])) {
+    if ($_SESSION['role_id'] == 3) {
+        // Redirect to the login page
+        header("Location: http://localhost/http5225/assignments");
+    }
+} else {
+    // Redirect to the login page
+    header("Location: http://localhost/http5225/assignments");
+}
 
 // Delete functionality
 if (isset($_POST['deleteWine'])) {
@@ -25,23 +36,16 @@ $query = "SELECT wines.id AS wine_id,wines.name AS wine_name, wine_types.name AS
             JOIN vineyards ON wines.vineyard_id = vineyards.id ORDER BY wines.id";
 
 $result = mysqli_query($connect, $query);
-
-
 ?>
 
-<!doctype html>
-<html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Wines | MV Wines </title>
-    <link href="../assets/css/style.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 
 <body>
     <div class="container">
-        <div class="d-flex justify-content-end my-4">
+        <div class="d-flex justify-content-between align-items-center my-4">
+            <h3 class="mb-0">All Wines</h3>
             <form action="addWine.php" method="POST">
                 <button type="submit" class="btn btn-custom btn-add">Add New Wine</button>
             </form>
@@ -118,4 +122,4 @@ $result = mysqli_query($connect, $query);
 </body>
 
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . '/http5225/assignments/admin/inc/footer.php');
+include("../inc/footer.php");

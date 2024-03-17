@@ -6,8 +6,11 @@ Welcome to the Wine E-commerce Website project! This README file will provide yo
 
 This project aims to develop an e-commerce website specifically tailored for wine products. It includes functionalities such as a home page, admin page, and user login system. The project is being developed in PHP and utilizes MySQL for the database management.
 
-![Wine Bottles](https://www.lcbo.com/content/dam/lcbo/products/043802.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg)
+![Wine Bottles](https://www.lcbo.com/en/products/wine/)
 _Sample wine bottles from LCBO website_
+
+![Favicon Icon](https://www.flaticon.com/free-icon/wine-glass_2769599?term=wine&page=1&position=59&origin=search&related_id=2769599)
+_Sample wine Favicon icon from Flaticon website_
 
 ## Current Status
 
@@ -17,10 +20,12 @@ _Sample wine bottles from LCBO website_
 - **Database Connectivity:** Database connection has been established.
 - **Database Query:** Implemented select queries with multiple joins (complex queries).
 
-### Assignment 2 (In Progress)
+### Assignment 2
 
-- **Admin Page:** Under development.
-- **Login System:** Under development.
+- **Admin Page:** CRUD Functionality Added For User and Wine.
+- **Login System:** Two types of Login Admin User and Normal User.
+- **Authentication:** Only Admin user have access to CRUD Pages.
+- **URL Attack:** No One Can Write Admin Page URL To ACCESS Admin Pages. If anyone try then it goes to the main page.
 
 ## Accessing the Project
 
@@ -40,15 +45,21 @@ The primary objectives of Assignment 1 are as follows:
 - MySQL
 - HTML
 - CSS
+- JS
 
-![Wine Tasting](https://images.unsplash.com/photo-1516172794340-5a3f7fdd849a)
+![Wine Tasting](https://unsplash.com/photos/wine-bottle-on-black-table-cJdwPzls6kg)
 _Image Source: Unsplash_
 
 ## How to Use
 
 1. Visit the provided URL to access the website.
 2. Explore the functionalities available on the home page.
-3. For Assignment 2 features (admin page and login), stay tuned for updates on their completion.
+3. For Admin User Login
+   - ID: milinvaniyawala@gmail.com and Password: admin@123
+   - Admin user can do create,read,update and delete the users as well as wines.
+4. For Normal User Login
+   - ID: abhishekgaur@gmail.com and Password: admin@123
+   - User can read the wines.
 
 ## Contact Information
 

@@ -5,7 +5,7 @@ include('admin/config/connect.php');
 if (isset($_POST['login'])) {
     $query = 'SELECT * FROM `users` WHERE 
     `email` = "' . $_POST['email'] . '" AND
-    `password` = "' . $_POST['password'] . '"
+    `password` = "' . md5($_POST['password']) . '"
     LIMIT 1';
     $result = mysqli_query($connect, $query);
     if (mysqli_num_rows($result)) {
@@ -28,6 +28,8 @@ if (isset($_POST['login'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/x-icon" href='./admin/assets/img/favicon.ico'>
     <title> Login | MV Wines </title>
     <link href="./admin/assets/css/style.css" rel="stylesheet" crossorigin="anonymous">
 </head>
