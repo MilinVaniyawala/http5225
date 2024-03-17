@@ -1,22 +1,23 @@
 <?php
 include("../config/config.php");
-include("../inc/header.php");
+include($_SERVER['DOCUMENT_ROOT'] . '/http5225/assignments/admin/inc/header.php');
 include("../config/connect.php");
 
 /* Get User Data */
 $user_id = $_GET['user_id'];
 
-$query = 'SELECT * FROM `users` Where `user_id`= '.$user_id.'';
+$query = 'SELECT * FROM `users` Where `user_id`= ' . $user_id . '';
 $user = mysqli_query($connect, $query);
 $result = $user->fetch_assoc();
 
 /* After Submit */
-if(isset($_POST['updateUser'])){
-    // For Secure Purpose we are using mysqli_real_escape_string() // Attack Like SQL INJECTION
+if (isset($_POST['updateUser'])) {
+    // For Secure Purpose we are using mysqli_real_escape_string() 
+    // Attack Like SQL INJECTION
     $query = 'UPDATE `users` SET `username`= "' . mysqli_real_escape_string($connect, $_POST['username']) . '",
     `password`="' . md5($_POST['password']) . '",
     `email`= "' . mysqli_real_escape_string($connect, $_POST['email']) . '",
-    `role_id`="' . mysqli_real_escape_string($connect, (int)$_POST['role_id']) . '" WHERE `user_id`='.$user_id.'';
+    `role_id`="' . mysqli_real_escape_string($connect, (int)$_POST['role_id']) . '" WHERE `user_id`=' . $user_id . '';
     // echo $query;
     $result = mysqli_query($connect, $query);
 
@@ -25,7 +26,7 @@ if(isset($_POST['updateUser'])){
     } else {
         header('LOCATION: user.php');
     }
-} else{
+} else {
     // echo "Error!!!";
 }
 ?>
@@ -65,16 +66,17 @@ if(isset($_POST['updateUser'])){
                     <!-- ROLE -->
                     <label for="role" class="form-label">Role</label>
                     <select class="form-select" id="role" name="role_id" aria-describedby="Role">
-                        <option value="1" <?php if($result['role_id'] == 1) echo 'selected'; ?>>Admin</option>
-                        <option value="2" <?php if($result['role_id'] == 2) echo 'selected'; ?>>Subadmin</option>
-                        <option value="3" <?php if($result['role_id'] == 3) echo 'selected'; ?>>User</option>
+                        <option value="1" <?php if ($result['role_id'] == 1) echo 'selected'; ?>>Admin</option>
+                        <option value="2" <?php if ($result['role_id'] == 2) echo 'selected'; ?>>Subadmin</option>
+                        <option value="3" <?php if ($result['role_id'] == 3) echo 'selected'; ?>>User</option>
                     </select>
                 </div>
             </div>
             <button type="submit" name="updateUser" class="btn btn-custom">Submit</button>
+            <button type="button" onclick="window.location.href='user.php'" class="btn btn-cancel">Cancel</button>
         </form>
     </div>
 </body>
 
 <?php
-include('../inc/footer.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/http5225/assignments/admin/inc/footer.php');

@@ -1,9 +1,9 @@
 <?php
 include("../config/config.php");
-include("../inc/header.php");
+include($_SERVER['DOCUMENT_ROOT'] . '/http5225/assignments/admin/inc/header.php');
 include("../config/connect.php");
 
-if(isset($_POST['addUser'])){
+if (isset($_POST['addUser'])) {
     // For Secure Purpose we are using mysqli_real_escape_string() // Attack Like SQL INJECTION
     $query = 'INSERT INTO `users` (`username`, `password`, `email`, `role_id`) VALUES 
     (
@@ -11,7 +11,7 @@ if(isset($_POST['addUser'])){
         "' . md5($_POST['password']) . '",
         "' . mysqli_real_escape_string($connect, $_POST['email']) . '",
         "' . mysqli_real_escape_string($connect, (int)$_POST['role_id']) . '"
-    )'; 
+    )';
     // echo $query;
     $result = mysqli_query($connect, $query);
 
@@ -20,7 +20,7 @@ if(isset($_POST['addUser'])){
     } else {
         header('LOCATION: user.php');
     }
-}else{
+} else {
     // echo "Error!!!";
 }
 ?>
@@ -67,9 +67,10 @@ if(isset($_POST['addUser'])){
                 </div>
             </div>
             <button type="submit" name="addUser" class="btn btn-custom">Submit</button>
+            <button type="button" onclick="window.location.href='user.php'" class="btn btn-cancel">Cancel</button>
         </form>
     </div>
 </body>
 
 <?php
-include('../inc/footer.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/http5225/assignments/admin/inc/footer.php');

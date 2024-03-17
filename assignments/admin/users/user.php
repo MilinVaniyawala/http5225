@@ -1,13 +1,28 @@
 <?php
 include("../config/config.php");
-include("../inc/header.php");
+include($_SERVER['DOCUMENT_ROOT'] . '/http5225/assignments/admin/inc/header.php');
 include("../config/connect.php");
+
+// Delete functionality
+if (isset($_POST['deleteUser'])) {
+    $user_id = $_POST['user_id'];
+    $query = "DELETE FROM users WHERE user_id = $user_id";
+    $result = mysqli_query($connect, $query);
+
+    // if ($result) {
+    //     echo '<div class="alert alert-success" role="alert">User deleted successfully!</div>';
+    // } else {
+    //     echo '<div class="alert alert-danger" role="alert">Failed to delete user!</div>';
+    // }
+} else {
+    // echo "error!!";
+}
 
 $query = 'SELECT u.*, r.role_name 
           FROM users u 
           JOIN roles r ON u.role_id = r.role_id';
 
-$users = mysqli_query($connect,$query);
+$users = mysqli_query($connect, $query);
 ?>
 
 <!doctype html>
@@ -21,6 +36,13 @@ $users = mysqli_query($connect,$query);
 </head>
 
 <body>
+    <div class="container">
+        <div class="d-flex justify-content-end my-4">
+            <form action="addUser.php" method="POST">
+                <button type="submit" class="btn btn-custom btn-add">Add New User</button>
+            </form>
+        </div>
+    </div>
     <div class="container">
         <div class="table-responsive">
             <table class="table table-bordered">
@@ -46,23 +68,29 @@ $users = mysqli_query($connect,$query);
                 </thead>
                 <tbody>
                     <?php
-                foreach ($users as $user) {
-                    echo '<tr>';
-                    echo '<td>'.$user['user_id'].'</td>';
-                    echo '<td>'.$user['username'].'</td>';
-                    echo '<td>'.$user['email'].'</td>';
-                    echo '<td>'.$user['role_name'].'</td>';
-                    echo '<td class="d-flex gap-2">';
-                    echo '<form action="addUser.php" method="POST">
-                            <button type="submit" class="btn btn-custom">Add</button>
-                            </form>';
-                    echo '<form action="updateUser.php" method="GET">
+                    // Check have data or not ?
+                    if (mysqli_num_rows($users) > 0) {
+                        foreach ($users as $user) {
+                            echo '<tr>';
+                            echo '<td>' . $user['user_id'] . '</td>';
+                            echo '<td>' . $user['username'] . '</td>';
+                            echo '<td>' . $user['email'] . '</td>';
+                            echo '<td>' . $user['role_name'] . '</td>';
+                            echo '<td class="d-flex gap-1">';
+                            echo '<form action="updateUser.php" method="GET">
                             <input type="hidden" name="user_id" value="' . $user['user_id'] . '">
-                            <button type="submit" class="btn btn-custom">Update</button>
+                            <button type="submit" class="btn btn-custom btn-update"><i class="bi bi-pencil-square"></i></button>
                             </form>';
-                    echo '</td>';
-                    echo '</tr>';
-                } ?>
+                            echo '<form action="" method="POST">
+                            <input type="hidden" name="user_id" value="' . $user['user_id'] . '">
+                            <button type="submit" name="deleteUser" class="btn btn-custom btn-delete"><i class="bi bi-trash"></i></button>
+                            </form>';
+                            echo '</td>';
+                            echo '</tr>';
+                        }
+                    } else {
+                        echo '<tr><td colspan="5">0 results</td></tr>';
+                    } ?>
                 </tbody>
             </table>
         </div>
@@ -70,4 +98,4 @@ $users = mysqli_query($connect,$query);
 </body>
 
 <?php
-include('../inc/footer.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/http5225/assignments/admin/inc/footer.php');
