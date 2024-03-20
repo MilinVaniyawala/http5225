@@ -1,3 +1,92 @@
+# Project Setup Guide
+
+This guide will walk you through setting up the project environment and creating necessary components for managing courses in a Laravel application.
+
+## Setting Up Environment
+
+1. **.env File:** Uncomment Database Code. Change `sqlite` to `mysql`.
+
+2. **Migrate Database:** Run the command `php artisan migrate:refresh`. It will migrate the database to MySQL.
+
+## Creating Courses
+
+1. **Create Migration for Courses:**
+
+    - Run `php artisan make:migration create_courses_table`.
+    - This will generate a migration file in `database -> migrations -> xxxxx_create_courses_table.php`.
+    - Modify the generated migration file to have the desired structure for the courses table:
+        ```php
+        // Structure of the table
+        $table->string('courseID');
+        $table->string('name');
+        ```
+
+2. **Create Factory for Course:**
+
+    - Run `php artisan make:factory Course`.
+    - Navigate to `database -> factories -> CourseFactory.php` and adjust as necessary.
+
+3. **Create Model for Course:**
+
+    - Run `php artisan make:model Course`.
+    - Add the following code in `app/Models/Course.php`:
+        ```php
+        protected $fillable = [
+            'courseID',
+            'name',
+        ];
+        ```
+
+4. **Seed Courses:**
+    - Navigate to `database -> seeders -> DatabaseSeeder.php`.
+    - Add seed data for courses:
+        ```php
+        Course::factory()->create([
+            'courseID' => 'HTTP 5225',
+            'name' => 'PHP',
+        ]);
+        // Add more courses as needed
+        ```
+    - Run `php artisan migrate:refresh --seed` to seed the database.
+
+## Creating Templates
+
+1. **Modify Default Laravel Files:**
+
+    - Update `resources -> views -> welcome.blade.php`.
+    - Update `resources -> routes -> web.php` for routing.
+
+2. **Create New Blade Files:**
+
+    - Create `home.blade.php` under `resources -> views`.
+    - Create a `layouts` folder under `resources -> views`.
+    - Create `admin.blade.php` under `layouts`.
+
+3. **Set Up Routing:**
+
+    - Modify `web.php` to specify the file paths for routing:
+        ```php
+        Route::get('/', function () {
+            return view('home');
+        });
+        ```
+
+4. **Create Controllers:**
+
+    - Run `php artisan make:controller HomeController --resource`.
+    - Implement the `index()` method in `HomeController` to return the `home` view.
+    - Run `php artisan make:controller CourseController --resource`.
+
+5. **Create Views for Courses:**
+
+    - Create a folder named `courses` under `resources -> views`.
+    - Create `index.blade.php` under `resources -> views -> courses`.
+
+6. **Fetch All Courses:**
+    - Implement necessary logic in `CourseController.php` to fetch all courses and pass them to the `index` view.
+
+Follow these steps to set up and manage courses in your Laravel application.
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -11,13 +100,13 @@
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   [Simple, fast routing engine](https://laravel.com/docs/routing).
+-   [Powerful dependency injection container](https://laravel.com/docs/container).
+-   Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+-   Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+-   Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+-   [Robust background job processing](https://laravel.com/docs/queues).
+-   [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
@@ -35,19 +124,19 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+-   **[Vehikl](https://vehikl.com/)**
+-   **[Tighten Co.](https://tighten.co)**
+-   **[WebReinvent](https://webreinvent.com/)**
+-   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+-   **[64 Robots](https://64robots.com)**
+-   **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+-   **[Cyber-Duck](https://cyber-duck.co.uk)**
+-   **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+-   **[Jump24](https://jump24.co.uk)**
+-   **[Redberry](https://redberry.international/laravel/)**
+-   **[Active Logic](https://activelogic.com)**
+-   **[byte5](https://byte5.de)**
+-   **[OP.GG](https://op.gg)**
 
 ## Contributing
 
