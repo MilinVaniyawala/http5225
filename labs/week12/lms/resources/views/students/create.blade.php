@@ -40,6 +40,14 @@
                                 <span class="text-danger" role="alert"><strong>{{ $message }}</strong></span>
                             @enderror
                         </div>
+                        <div class="col-6 mb-3">
+                            <label for="course" class="form-label">Select Course</label>
+                            <select name="course" id="course" class="form-control">
+                                @foreach ($courses as $course)
+                                    <option value="{{ $course->id }}">{{ $course->courseName }} </option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
